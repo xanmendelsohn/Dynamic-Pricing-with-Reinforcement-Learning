@@ -41,11 +41,11 @@ Next Step: impement algorithms with JAX library (https://github.com/google/jax).
 
 Reinforcement Learning (RL) is a type of machine learning technique that enables an agent to learn in an interactive environment by trial and error using feedback from its own actions and experiences.
 
-<center><img src="images/reinforcement_vs_other_ml.jpeg" width=300 height=200 /></center>
+<center><img src="images/reinforcement_vs_other_ml.jpeg" width=600 height=400 /></center>
 
 Both supervised and reinforcement learning use mapping between input and output. Unlike supervised learning where the feedback provided to the agent is the correct set of actions for performing a task, reinforcement learning uses rewards and punishments as signals for positive and negative behavior.
 
-<center><img src="images/reinforcement_diagram.png" width=300 height=200 /></center>
+<center><img src="images/reinforcement_diagram.png" width=450 height=175 /></center>
 
 Reinforcement learning is differs from unsupervised learning in terms of the final objective. While the goal in unsupervised learning is to find similarities and differences between data points; reinforcement learning aims to find a suitable action model that would maximize the total cumulative reward of the agent. The figure above illustrates the action-reward feedback loop of a generic RL model. An introductory book from Richard S. Sutton and Andrew G. Barto: [Reinforcement Learning:
 An Introduction](https://yulizi123.github.io/static/files/Reinforcement_learning_An_introduction.pdf).
@@ -63,7 +63,7 @@ For our use case, we will be considering a discrete (ordinal) set of actions. Th
 
 The multi-armed Bandit problem is a classic reinforcement learning problem that exemplifies the **exploration–exploitation tradeoff dilemma**. The name comes from imagining a gambler at a row of slot machines (sometimes known as "one-armed bandits") with different payout distributions, who has to decide which machines to play, how many times to play each machine and in which order to play them, and whether to continue with the current machine or try a different machine.
 
-<center><img src="images/one_armed_bandit.jpg" width=200 height=150 /></center>
+<center><img src="images/one_armed_bandit.jpg" width=230 height=230 /></center>
 
 The multi-armed Bandit problem becomes "contextual" when the choice of action further depends on available information. With the help of a relevant user data, multi-armed bandits can become context-based. Contextual bandit algorithms rely on an incoming stream of user context data, either historical or fresh, which can be used to make better algorithmic decisions in real-time.
 
@@ -609,7 +609,7 @@ All algorithms above are run in parrallel and compared in the plot below. We com
 * **Reward per Batch $b_i$:** $r_{b_i} =\sum_{action} \mathbb{1}_{win}(action) \cdot (10-a)$
 * **Cumulative Mean Reward for $k$ batches**: $\frac{\sum r_{b_i}}{kx10}$
 
-<img src="images/cmab_comp_plot.png" width=800 height=500 />
+<img src="images/cmab_comp_plot.png" width=740 height=610 />
 
 **Results:** all algorithms seem to learn very fast and converge after about 90 batches with 10 observations each \-- granted, they are learning a very simple distribution here. Thompson Sampling, which is proven to be an efficient algorithm, does outperform the Epsilon Greedy algorithm a little and seems to converge towards more rewarding actions. The Softmax algorithms performance is quite poor. When the binary rewards and the regrets (the reward difference between the most rewarding action and the action chosen by the algorithm) one sees that the Softmax algorithm does win a comparable number of deals but does so expensively. The Upper Confidence Bound algorithm (here applying the 60% quantile) does learn but consistently chooses margins which are too low and looses many deals. This indicates that the bootstrapped quanitle does not converge towards the true mean very quickly. Perhaps a larger number of bootstrap samples could improve theses results.
 
